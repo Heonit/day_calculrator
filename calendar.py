@@ -28,24 +28,13 @@ def main():
     for i in range(1, date["month"]):
         total_days = total_days + month_days[i]
 
-    if date["year"] % 4 == 0:
-        if date["year"] % 100 == 0:
-            if date["year"] % 400 == 0:
-                if date["month"] >= 3:
-                    total_days = total_days + 1
-            else:
-                pass
-        else:
-            if date["month"] >= 3:
-                total_days = total_days + 1
-    else:
-        pass
+    if is_leap(date["year"]) and date["month"] >= 3:
+        total_days = total_days + 1
 
     total_days = total_days + day
 
     print(
         f"{date['year']}년 {date['month']}월 {date['day']}일은 {day_names[total_days % 7]} 입니다.")
-
 
 if __name__ == "__main__":
     main()
